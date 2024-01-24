@@ -6,7 +6,7 @@
         <title>Text File Viewer</title>
     </head>
     <body>
-        <input type="file" id="file">
+        <input type="file" id="file" style="background-color:#eee;position:sticky;width:100%;top:8px">
         <pre id="contents"></pre>
         <script>
             document.getElementById("file").addEventListener("change", event => {
@@ -16,8 +16,8 @@
                     reader.onload = e => {
                         document.getElementById("contents").textContent = e.target.result
                     }
-                    reader.onerror = e => {
-                        document.getElementById("contents").textContent = JSON.stringify(e)
+                    reader.onerror = _ => {
+                        document.getElementById("contents").textContent = "An error occured while reading the file. The browser may not have permission to access it."
                     }
                     reader.readAsText(file)
                 }
