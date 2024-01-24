@@ -16,6 +16,9 @@
                     reader.onload = e => {
                         document.getElementById("contents").textContent = e.target.result
                     }
+                    reader.onerror = e => {
+                        document.getElementById("contents").textContent = JSON.stringify(e)
+                    }
                     reader.readAsText(file)
                 }
             })
